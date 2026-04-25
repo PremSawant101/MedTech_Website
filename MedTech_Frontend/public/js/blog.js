@@ -1,7 +1,7 @@
-// ── blog.js ──
-
-const BASE = "http://localhost:3000";
-
+const BASE = window.location.hostname === "localhost"
+  ? "http://localhost:3000"
+  : "https://med-tech-website.vercel.app";
+  
 function formatDate(dateStr) {
   return new Date(dateStr).toLocaleDateString("en-IN", {
     day: "numeric",

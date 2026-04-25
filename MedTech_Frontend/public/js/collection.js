@@ -1,6 +1,8 @@
 gsap.registerPlugin(ScrollTrigger);
 
-const BASE = "http://localhost:3000";
+const BASE = window.location.hostname === "localhost"
+  ? "http://localhost:3000"
+  : "https://med-tech-website.vercel.app";
 
 // ============================
 // STATE

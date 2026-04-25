@@ -1,6 +1,7 @@
-// ✅ Email based cart (localStorage auth)
+const BASE = window.location.hostname === "localhost"
+  ? "http://localhost:3000"
+  : "https://med-tech-website.vercel.app";
 
-const BASE = "http://localhost:3000";
 const userEmail = localStorage.getItem("userEmail");
 
 function formatPrice(value) {
