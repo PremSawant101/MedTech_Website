@@ -7,11 +7,13 @@ const btnText = document.getElementById("btn-text");
 const btnLoader = document.getElementById("btn-loader");
 
 // ✅ BASE URLs
-const BACKEND_URL = "http://localhost:3000";
-const FRONTEND_URL = "http://127.0.0.1:5500";
+const BASE = window.location.hostname === "localhost"
+    ? "http://localhost:3000"
+    : "https://med-tech-website.vercel.app";
 
-// ✅ Admin panel Next.js URL (alag port pe hoga — apna sahi port lagao)
-const ADMIN_URL = "http://localhost:3000"; // agar Next.js alag port pe ho to change karo e.g. http://localhost:3001
+const FRONTEND_URL = window.location.hostname === "localhost"
+    ? "http://127.0.0.1:5500"
+    : "https://your-frontend-url.vercel.app";
 
 // ── Toggle Password Visibility ──
 function togglePassword(inputId, toggleBtn) {
@@ -61,7 +63,7 @@ form.addEventListener("submit", async (e) => {
         setLoading(true);
         showMessage("");
 
-        const res = await fetch(`${BACKEND_URL}/api/auth/login`, {
+        const res = await fetch(`${BASE}/api/auth/login`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, password }),
@@ -89,7 +91,7 @@ form.addEventListener("submit", async (e) => {
                         name: data.user.name,
                         email: data.user.email,
                     });
-                    window.location.href = `${BACKEND_URL}/admin?${params.toString()}`;
+                    window.location.href = `${BASE}/admin?${params.toString()}`;
                 } else {
                     window.location.href = `${FRONTEND_URL}/MedTech_Frontend/index.html`;
                 }
@@ -110,6 +112,6 @@ form.addEventListener("submit", async (e) => {
 // ── Google Login ──
 function googleLogin() {
     window.location.href =
-        `${BACKEND_URL}/api/auth/signin/google?callbackUrl=` +
+        `${BASE}/api/auth/signin/google?callbackUrl=` +
         encodeURIComponent(`${ADMIN_URL}/admin`);
 }

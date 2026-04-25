@@ -1,4 +1,6 @@
-// ── signup.js ──
+const BASE = window.location.hostname === "localhost"
+    ? "http://localhost:3000"
+    : "https://med-tech-website.vercel.app";
 
 const form = document.getElementById("signup-form");
 const message = document.getElementById("message");
@@ -60,7 +62,7 @@ form.addEventListener("submit", async (e) => {
         setLoading(true);
         showMessage("");
 
-        const res = await fetch("http://localhost:3000/api/auth/register", {
+        const res = await fetch(`${BASE}/api/auth/register`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name, email, password }),
@@ -88,6 +90,6 @@ form.addEventListener("submit", async (e) => {
 // ── Google Signup (NextAuth) ──
 function googleLogin() {
     window.location.href =
-        "http://localhost:3000/api/auth/signin/google?callbackUrl=" +
-        encodeURIComponent("http://localhost:3000/admin");
+        `${BASE}/api/auth/signin/google?callbackUrl=` +
+        encodeURIComponent(`${BASE}/admin`);
 }
