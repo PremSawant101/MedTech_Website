@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog – MedTech</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./public/css/blog.css" />
+</head>
+
+<body>
+
+    <!-- ── Topbar ── -->
+    <nav class="topbar">
+        <a href="./index.html" class="brand">
+            <img src="./assets/images/logo.png" alt="Logo" />
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-items" id="nav-items">
+            <a href="./index.html" class="nav-item">Home</a>
+            <a href="./collection.html" class="nav-item active">Collection</a>
+            <a href="./about.html" class="nav-item">About Us</a>
+            <a href="./contact.html" class="nav-item">Contact Us</a>
+            <a href="./blog.html" class="nav-item">Blog</a>
+        </div>
+        <a href="./cart.html" class="cart-icon-wrap" aria-label="Open cart">
+            <span class="cart-icon">🛒</span>
+            <span class="cart-count" id="cart-count">0</span>
+        </a>
+    </nav>
+
+    <!-- ── Hero ── -->
+    <section class="blog-hero">
+        <div class="blog-hero-inner">
+            <p class="eyebrow">Health & Wellness</p>
+            <h1>Our <span class="hero-accent">Blog</span></h1>
+            <p class="hero-sub">Expert insights, tips, and stories for a healthier you.</p>
+        </div>
+    </section>
+
+    <!-- ── Blog Grid ── -->
+    <main class="blog-page">
+        <div id="blogs-container" class="blogs-grid">
+            <div class="loading-state">
+                <div class="spinner"></div>
+                <p>Loading articles…</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- ── Footer ── -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col footer-about">
+                <a href="/"><img src="./assets/images/logo.png" alt="logo" class="footer-logo" /></a>
+                <p class="footer-description">
+                    Be yourself, follow your heart! In yogic sense, the phrase "be yourself – follow your heart" has a
+                    deeper
+                    meaning.
+                </p>
+                <a href="https://maps.app.goo.gl/wrdUBG43JC5x7kwy9" target="_blank"
+                    class="footer-address footer-description">
+                    <span class="footer-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 
+        7-13c0-3.87-3.13-7-7-7zm0 
+        9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 
+        6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 
+        11.5 12 11.5z" />
+                        </svg>
+                    </span>
+                    Ayurveda consultant | Panchkarma specialist Ahmedabad - Satellite / Naranpura
+                </a>
+                <a href="tel:+918487079480" class="footer-phone footer-description">
+                    <svg width="18" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 
+  19.79 19.79 0 0 1-8.63-3.07 
+  19.5 19.5 0 0 1-6-6 
+  19.79 19.79 0 0 1-3.07-8.67 
+  A2 2 0 0 1 4.11 2h3 
+  a2 2 0 0 1 2 1.72 
+  c.12.81.37 1.6.72 2.34 
+  a2 2 0 0 1-.45 2.11 
+  L8.09 9.91a16 16 0 0 0 6 6 
+  l1.74-1.29a2 2 0 0 1 2.11-.45 
+  c.74.35 1.53.6 2.34.72 
+  A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                    Phone: (+91) 84870 79480
+                </a>
+            </div>
+
+            <div class="footer-col">
+                <h4>RECENT POSTS</h4>
+            </div>
+
+            <div class="footer-col">
+                <h4>OUR STORES</h4>
+                <a href="#">Satellite</a>
+                <a href="#">Naranpura</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>USEFUL LINKS</h4>
+                <a href="https://shashwatayurvedam.com/privacy-policy/">Privacy Policy</a>
+                <a href="https://shashwatayurvedam.com/return-policy/">Returns</a>
+                <a href="https://shashwatayurvedam.com/terms-of-use/">Terms & Conditions</a>
+                <a href="./contact.html">Contact Us</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>FOOTER MENU</h4>
+                <a href="https://www.instagram.com/vaidya_mihir_khatri/">Instagram profile</a>
+                <a href="./collection.html">Shop</a>
+                <a href="./contact.html">Contact Us</a>
+                <a href="./blog.html">Blog</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./public/js/blog.js"></script>
+</body>
+
+</html>

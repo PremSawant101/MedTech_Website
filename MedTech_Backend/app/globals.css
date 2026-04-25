@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide scrollbar but keep scroll working */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE & Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.card {
+    @apply bg-[#1A1A1A]/80 backdrop-blur-xl p-6 rounded-2xl border border-[#222] shadow-xl;
+}
+
+.section-title {
+    @apply text-xl font-semibold mb-6 text-[#6B8E23];
+}
+
+.input {
+    @apply w-full mb-3 p-3 rounded-lg bg-[#0F1412] border border-[#222] outline-none focus:border-[#6B8E23] transition;
+}
+
+.btn-primary {
+    @apply bg-[#6B8E23] text-black px-5 py-2 rounded-lg font-semibold hover:opacity-80 transition;
+}
+
+.btn-secondary {
+    @apply bg-gray-600 px-5 py-2 rounded-lg;
+}
+
+.btn-edit {
+    @apply bg-blue-600 px-4 py-2 rounded-md text-sm hover:opacity-80;
+}
+
+.btn-delete {
+    @apply bg-red-600 px-4 py-2 rounded-md text-sm hover:opacity-80;
+}
+
+.badge {
+    @apply text-xs px-3 py-1 rounded-full text-white font-medium;
+}
+
+.product-card {
+    @apply bg-[#1A1A1A] border border-[#222] rounded-2xl p-5 shadow-xl hover:scale-[1.02] transition;
+}
+
+.discount-badge {
+    @apply absolute top-2 left-2 bg-[#6B8E23] px-2 py-1 text-xs rounded-full;
+}
+
+.card {
+    @apply bg-[#1A1A1A]/80 backdrop-blur-xl p-4 rounded-2xl border border-[#222];
+}
+
+.order-card {
+    @apply bg-[#1A1A1A] p-5 rounded-2xl border border-[#222] shadow-lg hover:scale-[1.01] transition cursor-pointer;
+}
+
+.filter-btn {
+    @apply px-4 py-2 rounded-full bg-[#1A1A1A] text-gray-300 text-sm hover:bg-[#222];
+}
+
+.active-filter {
+    @apply bg-[#6B8E23] text-black font-semibold;
+}
+
+.modal {
+    @apply bg-[#1A1A1A] text-white p-8 rounded-3xl w-[550px] relative shadow-2xl border border-[#222];
+}
+
+.modal-title {
+    @apply text-2xl font-bold text-[#6B8E23] mb-6;
+}
+
+.badge {
+    @apply px-3 py-1 text-xs rounded-full text-white;
+}
+
+.product-row {
+    @apply flex items-center gap-4 bg-[#111] p-3 rounded-xl border border-[#222];
+}
+
+.input {
+    @apply p-3 rounded-xl bg-[#111] border border-[#222] outline-none focus:border-[#6B8E23] transition;
+}
+
+.btn-primary {
+    @apply bg-[#6B8E23] text-black px-6 py-3 rounded-xl font-semibold hover:opacity-80 transition;
+}
+
+.btn-secondary {
+    @apply bg-gray-700 px-3 py-1 rounded-lg text-sm hover:opacity-80;
+}
+
+.btn-blue {
+    @apply bg-blue-600 px-3 py-1 rounded-lg text-sm hover:opacity-80;
+}
+
+.btn-red {
+    @apply bg-red-600 px-3 py-1 rounded-lg text-sm hover:opacity-80;
+}
+
+.coupon-card {
+    @apply bg-[#1A1A1A]/80 backdrop-blur-xl p-6 rounded-2xl border border-[#222] shadow-lg hover:scale-[1.02] transition;
+}
+
+.status-badge {
+    @apply text-xs px-3 py-1 rounded-full font-semibold;
+}
+
+.status-badge.active {
+    @apply bg-green-600 text-white;
+}
+
+.status-badge.expired {
+    @apply bg-red-600 text-white;
+}

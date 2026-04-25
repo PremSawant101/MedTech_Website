@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up – MedTech</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="auth.css" />
+</head>
+
+<body>
+
+    <div class="auth-bg">
+        <img src="/images/amlaBg.png" alt="Background" />
+        <div class="auth-overlay"></div>
+
+        <div class="auth-card">
+
+            <!-- Logo -->
+            <a href="../index.html" class="auth-logo-link">
+                <img src="../assets/images/logo.png" alt="MedTech" class="auth-logo" />
+            </a>
+
+            <h1 class="auth-title">Create Account</h1>
+            <p class="auth-subtitle">Join MedTech and start shopping</p>
+
+            <form id="signup-form">
+
+                <div class="auth-group">
+                    <label for="name">Full Name</label>
+                    <div class="input-wrap">
+                        <svg class="input-icon" width="18" height="18" fill="none" stroke="currentColor"
+                            stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                            <circle cx="12" cy="7" r="4" />
+                        </svg>
+                        <input type="text" id="name" placeholder="Your full name" autocomplete="name" />
+                    </div>
+                </div>
+
+                <div class="auth-group">
+                    <label for="email">Email</label>
+                    <div class="input-wrap">
+                        <svg class="input-icon" width="18" height="18" fill="none" stroke="currentColor"
+                            stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                        <input type="email" id="email" placeholder="you@example.com" autocomplete="email" />
+                    </div>
+                </div>
+
+                <div class="auth-group">
+                    <label for="password">Password</label>
+                    <div class="input-wrap">
+                        <svg class="input-icon" width="18" height="18" fill="none" stroke="currentColor"
+                            stroke-width="2" viewBox="0 0 24 24">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                        </svg>
+                        <input type="password" id="password" placeholder="Min. 6 characters"
+                            autocomplete="new-password" />
+                        <button type="button" class="toggle-password" onclick="togglePassword('password', this)">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <button id="signup-btn" type="submit" class="auth-btn">
+                    <span id="btn-text">Create Account</span>
+                    <span id="btn-loader" class="btn-loader hidden"></span>
+                </button>
+
+            </form>
+
+            <p id="message" class="auth-message"></p>
+
+            <!-- Divider -->
+            <div class="auth-divider">
+                <span>or continue with</span>
+            </div>
+
+            <!-- Google Signup -->
+            <button class="google-btn" onclick="googleLogin()">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" width="20"
+                    height="20" />
+                Continue with Google
+            </button>
+
+            <!-- Login Link -->
+            <p class="auth-link-text">
+                Already have an account?
+                <a href="./login.html" class="auth-link">Login</a>
+            </p>
+
+        </div>
+    </div>
+
+    <script src="signup.js"></script>
+</body>
+
+</html>
