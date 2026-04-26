@@ -1,3 +1,4 @@
+
 :root {
   --bg: #f8f3ec;
   --fg: #5c6715;
@@ -132,6 +133,7 @@ section {
   aspect-ratio: 5/7;
   transform-style: preserve-3d;
   transform-origin: top;
+  will-change: transform;
 }
 
 #card-1 {
@@ -159,19 +161,39 @@ section {
   align-items: center;
   text-align: center;
   transform: rotateY(180deg);
-  padding: 2rem;
+  padding: 0.6rem;
+}
+
+.card-back img {
+  border-radius: 20px;
+}
+
+.card-back-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  border-radius: inherit;
 }
 
 .card-back span {
   position: absolute;
   top: 2rem;
   left: 2rem;
-  opacity: 0.4;
+  opacity: 0.8;
   font-size: 1.5rem;
+  z-index: 1;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
 }
 
 .card-back p {
   font-size: 1.2rem;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
 }
 
 /* Card Colors */
@@ -253,9 +275,12 @@ section {
   padding: 0;
 }
 
+
 .hero-box {
+  position: relative;
+  z-index: 1;
   width: 100%;
-  height: 90px;
+  height: 100%;
   background: var(--bg);
   display: flex;
   align-items: center;
@@ -292,12 +317,10 @@ section {
 }
 
 @keyframes blinkCursor {
-
   0%,
   50% {
     opacity: 1;
   }
-
   50.01%,
   100% {
     opacity: 0;
@@ -306,8 +329,7 @@ section {
 
 .video-scroll {
   position: relative;
-  height: 200vh;
-  /* controls scroll length */
+  height: 200vh; /* controls scroll length */
   background: black;
   padding: 0;
 }
@@ -319,8 +341,7 @@ section {
   height: 100vh;
   object-fit: cover;
   padding: 0;
-  display: block;
-  /* ensures the canvas fills the width and maintains aspect ratio */
+  display: block; /* ensures the canvas fills the width and maintains aspect ratio */
 }
 
 .video-overlay {
@@ -443,7 +464,6 @@ section {
   color: #fff;
   transform: translateY(-2px);
 }
-
 .buy-btn span {
   margin-left: 6px;
   transition: transform 0.3s ease;
@@ -522,7 +542,7 @@ section {
     display: flex;
     transform: rotateY(0deg);
     backface-visibility: visible;
-    border-radius: 20px !important;
+    border-radius: 8px;
   }
 
   .card-back span {
@@ -558,13 +578,11 @@ section {
   .tag.line-1 h2 {
     font-size: 1rem;
   }
-
   .tag.line-1 p {
     font-size: 1rem;
     margin-left: auto;
     margin-right: auto;
   }
-
   .intro h1 {
     width: 100%;
     font-size: 3rem;

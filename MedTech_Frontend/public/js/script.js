@@ -236,18 +236,19 @@ function createAccountButtonAnimation() {
     introTl.to(img3, { scale: 1, x: 0, y: 0, rotation: 0, ease: "none" }, 0);
   }
 
-  function createExtraCard(id, title, text) {
+  function createExtraCard(id, type, content) {
     const card = document.createElement("div");
     card.className = "card extra-card";
     card.id = id;
 
-    card.innerHTML = `
-      <div class="card-back">
-        <span>${title}</span>
-        <p>${text}</p>
-      </div>
-    `;
+    let inner;
+    if (type === "video") {
+      inner = `<video class="card-back-video" src="${content}" loop muted playsinline preload="auto"></video>`;
+    } else {
+      inner = `<span>${content.name}</span><p>${content.desc}</p>`;
+    }
 
+    card.innerHTML = `<div class="card-back">${inner}</div>`;
     return card;
   }
 
@@ -255,17 +256,15 @@ function createAccountButtonAnimation() {
     if (extraCards.length) return;
 
     const data = [
-      ["card-4", "Card Information4", "This is the card back content4."],
-      ["card-5", "Card Information5", "This is the card back content5."],
-      ["card-6", "Card Information6", "This is the card back content6."],
-      ["card-7", "Card Information7", "This is the card back content7."],
-      ["card-8", "Card Information8", "This is the card back content8."],
-      ["card-9", "Card Information9", "This is the card back content9."],
+      ["card-4", "video", "assets/videos/card-2.mp4"],
+      ["card-5", "text",  { name: "Priya Shah", desc: "After years of struggling with hair thinning, the Ayurvedic treatment here gave me visible results within 3 months. Truly life-changing." }],
+      ["card-6", "video", "assets/videos/card-3.mp4"],
+      ["card-7", "text",  { name: "Ravi Desai", desc: "The panchkarma therapy combined with the hair oil worked wonders for my scalp health. No more dandruff and my hair feels stronger than ever." }],
+      // ["card-8", "video", "assets/videos/card-1.mp4"],
+      ["card-9", "text",  { name: "Meena Patel", desc: "I was skeptical at first but the results speak for themselves. My hair fall reduced drastically and new growth is visible. Highly recommend!" }],
     ];
 
-    extraCards = data.map(([id, title, text]) =>
-      createExtraCard(id, title, text),
-    );
+    extraCards = data.map(([id, type, content]) => createExtraCard(id, type, content));
     extraCards.forEach((card) => cardContainer.appendChild(card));
   }
 
@@ -422,6 +421,16 @@ function createAccountButtonAnimation() {
         zIndex: 100 - Math.round(absSlot * 10),
         borderRadius: "20px",
       });
+
+      // Play video when card is visible in flow, pause when off-screen
+      const video = card.querySelector(".card-back-video");
+      if (video) {
+        if (opacitySmooth > 0) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      }
     });
   }
 
@@ -587,6 +596,16 @@ function createAccountButtonAnimation() {
   }
 
   function createDesktopStickyAnimation() {
+    // Cache per-card video elements for flip-triggered playback
+    const cardVideos = [
+      document.querySelector("#card-1 .card-back-video"),
+      document.querySelector("#card-2 .card-back-video"),
+      document.querySelector("#card-3 .card-back-video"),
+    ];
+    // Scroll progress at which each card's back becomes visible (past 90° flip).
+    // The flip tween starts at timeline pos 0.5 with stagger 0.1 over a ~1.3 total duration.
+    const FLIP_VISIBLE_THRESHOLDS = [0.62, 0.69, 0.77];
+
     // Increased scrub for smoother feel, will-change hints handled via CSS
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -598,6 +617,18 @@ function createAccountButtonAnimation() {
         pinSpacing: true,
         invalidateOnRefresh: true,
         anticipatePin: 1, // ← prevents pin jump on fast scroll
+        onUpdate: (self) => {
+          const progress = self.progress;
+          cardVideos.forEach((video, i) => {
+            if (!video) return;
+            if (progress >= FLIP_VISIBLE_THRESHOLDS[i]) {
+              video.play().catch(() => {});
+            } else {
+              video.pause();
+              video.currentTime = 0;
+            }
+          });
+        },
       },
     });
 
@@ -617,15 +648,13 @@ function createAccountButtonAnimation() {
       0.08,
     );
 
-    // Gap open — use a softer ease and slightly longer window
-    tl.to(
+    // Gap open — finishes before the earliest flip (0.5) to avoid flex-reflow
+    // overlapping with rotationY transforms on card-2 and card-3
+    tl.fromTo(
       cardContainer,
-      {
-        gap: "20px",
-        ease: "power3.inOut",
-        duration: 0.45,
-      },
-      0.32,
+      { gap: "0px" },
+      { gap: "20px", ease: "power3.inOut", duration: 0.38 },
+      0.08,
     );
 
     tl.to(
@@ -660,18 +689,24 @@ function createAccountButtonAnimation() {
       0.5,
     );
 
-    // Side-card settle — longer window, smoother ease
-    tl.to(
+    // Side-card settle — ends at 0.65, before card-3 flip starts at 0.7,
+    // so y/scale/rotationZ are fully settled before rotationY begins
+    tl.fromTo(
       ["#card-1", "#card-3"],
+      { y: 0, scale: 1, rotationZ: 0 },
       {
         y: 30,
         scale: CARD_MAX_SCALE - 0.16,
         rotationZ: (i) => [-15, 15][i],
         ease: "power3.inOut",
-        duration: 0.55,
+        duration: 0.25,
       },
-      0.95,
+      0.4,
     );
+
+    // Pad timeline to 1.7 so FLOW_START (0.78) maps to timeline 1.326,
+    // which is past card-3's flip end (1.3) — prevents rotationY jump on transition
+    tl.to({}, { duration: 0.4 }, 1.3);
 
     // Flow Mode Trigger — separate ScrollTrigger with matching scrub
     ScrollTrigger.create({
