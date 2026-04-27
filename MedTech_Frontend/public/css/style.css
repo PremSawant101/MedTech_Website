@@ -608,18 +608,22 @@ section {
     right: -8%;
   }
 
-  .buy-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 1.5rem;
-    padding: 0.8rem 1.6rem;
-    font-size: 0.9rem;
-    width: clamp(140px, 55vw, 360px);
-    height: auto;
-    left: 50%;
-    transform: translateX(-80%);
-  }
+.buy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 1.5rem auto;   /* center horizontally */
+
+  padding: 0.6rem 1.2rem;
+  font-size: 0.85rem;
+
+  width: clamp(120px, 40vw, 200px);
+  height: auto;
+
+  left: auto;
+  transform: none;
+}
 }
 
 .footer {
