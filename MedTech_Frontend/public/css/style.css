@@ -615,7 +615,7 @@ section {
     margin-top: 1.5rem;
     padding: 0.8rem 1.6rem;
     font-size: 0.9rem;
-    width: clamp(140px, 50vw, 220px);
+    width: clamp(140px, 55vw, 360px);
     height: auto;
     left: 50%;
     transform: translateX(-80%);
