@@ -199,7 +199,7 @@ function createAccountButtonAnimation() {
 
     gsap.set(img1, {
       scale: 2.2,
-      x: -120,
+      x: -110,
       y: 120,
       rotation: -10,
       transformOrigin: "center center",
@@ -215,7 +215,7 @@ function createAccountButtonAnimation() {
 
     gsap.set(img3, {
       scale: 2,
-      x: 80,
+      x: 120,
       y: -120,
       rotation: 8,
       transformOrigin: "center center",
